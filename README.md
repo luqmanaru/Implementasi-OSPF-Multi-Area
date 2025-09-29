@@ -18,14 +18,16 @@ Proyek ini mengimplementasikan routing protocol OSPF (Open Shortest Path First) 
   |            |            |            |            |
   |            |            |            |            |
 +------+     +------+     +------+     +------+     +------+
-| LAN1 |     | LAN3 |     |      |     |      |     | LAN4 |
+| PC0  |     | PC1  |     | PC3  |     | PC5  |     | PC7  |
 +------+     +------+     +------+     +------+     +------+
-                            |            |
-                         +------+     +------+
-                         |      |     |      |
-                         | LAN2 |     |      |
-                         |      |     |      |
-                         +------+     +------+
+               |            |            |
+            +------+     +------+     +------+
+            | PC2  |     | PC4  |     | PC6  |
+            +------+     +------+     +------+
+                            |
+                         +------+
+                         |Server|
+                         +------+
 ```
 <img width="827" height="354" alt="image" src="https://github.com/user-attachments/assets/d6748ef7-35ea-409b-aa58-fe5e5da19389" />
 
@@ -46,15 +48,36 @@ Proyek ini mengimplementasikan routing protocol OSPF (Open Shortest Path First) 
 | R4 | GigabitEthernet0/0 | 40.40.40.2 | 255.255.255.252 | 10 |
 | R4 | GigabitEthernet0/1 | 192.168.3.1 | 255.255.255.0 | 10 |
 
-### Tabel Jaringan LAN
+### Tabel Konfigurasi PC dan Server
 
-| LAN | Network | Subnet Mask | Gateway |
-|-----|---------|-------------|---------|
-| LAN1 | 192.168.1.0 | 255.255.255.0 | 192.168.1.1 |
-| LAN2 | 192.168.2.0 | 255.255.255.0 | 192.168.2.1 |
-| LAN3 | 172.20.1.0 | 255.255.255.0 | 172.20.1.1 |
-| LAN4 | 192.168.3.0 | 255.255.255.0 | 192.168.3.1 |
+| Perangkat | IP Address | Subnet Mask | Default Gateway |
+|-----------|------------|-------------|-----------------|
+| PC0 | 192.168.1.2 | 255.255.255.0 | 192.168.1.1 |
+| PC1 | 192.168.2.2 | 255.255.255.0 | 192.168.2.1 |
+| PC2 | 192.168.2.3 | 255.255.255.0 | 192.168.2.1 |
+| PC3 | 192.168.3.2 | 255.255.255.0 | 192.168.3.1 |
+| PC4 | 192.168.3.3 | 255.255.255.0 | 192.168.3.1 |
+| Server0 | 172.20.1.2 | 255.255.255.0 | 172.20.1.1 |
 
+## 📁 Struktur Projek
+
+```
+Implementasi-OSPF-Multi-Area/
+├── README.md
+├── router/
+│   ├── R0.txt
+│   ├── R1.txt
+│   ├── R2.txt
+│   ├── R3.txt
+│   └── R4.txt
+└── end-device/
+    ├── PC0.txt
+    ├── PC1.txt
+    ├── PC2.txt
+    ├── PC3.txt
+    ├── PC4.txt
+    └── Server0.txt
+```
 ## 📝 Penjelasan Konfigurasi
 
 ### OSPF Multi-Area
